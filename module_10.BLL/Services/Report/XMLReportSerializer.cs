@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace module_10.BLL.Services.Report
 {
-    public class XMLReportSerializer : ISerializer
+    public class XmlReportSerializer : ISerializer
     {
         public string Serialize(IEnumerable<Attendance> attendance)
         {

@@ -9,7 +9,6 @@ using module_10.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace module_10.BLL.Services
@@ -22,7 +21,7 @@ namespace module_10.BLL.Services
         private readonly IMapper _mapper;
 
         public HomeworkService(IRepository<Homework> homeworkRepository,
-            IHomeworkHandler homeworkHandler, IBLL_Mapper mapper, ILoggerFactory factory = null)
+            IHomeworkHandler homeworkHandler, IBllMapper mapper, ILoggerFactory factory = null)
         {
             _homeworkRepository = homeworkRepository;
             _homeworkHandler = homeworkHandler;

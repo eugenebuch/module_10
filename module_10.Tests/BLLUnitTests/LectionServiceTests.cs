@@ -16,7 +16,7 @@ namespace module_10.Tests.BLLUnitTests
     [TestFixture]
     public class LectionServiceTests
     {
-        private readonly LectionDTO _LectionDTO = new LectionDTO
+        private readonly LectionDTO _lectionDto = new LectionDTO
         {
             Id = 1,
             Name = "Math",
@@ -36,7 +36,7 @@ namespace module_10.Tests.BLLUnitTests
             Mock.Setup(repo => repo.GetAsync(It.IsAny<int>()))
                 .Returns(GetTest());
 
-            LectionService = new LectionService(Mock.Object, new BLL_Mapper(), new NullLoggerFactory());
+            LectionService = new LectionService(Mock.Object, new BllMapper(), new NullLoggerFactory());
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace module_10.Tests.BLLUnitTests
         [Test]
         public async Task UpdateAsync_ValidCall()
         {
-            await LectionService.UpdateAsync(_LectionDTO);
+            await LectionService.UpdateAsync(_lectionDto);
 
             Mock.Verify(m => m.Update(It.IsAny<Lection>()));
         }
@@ -99,7 +99,7 @@ namespace module_10.Tests.BLLUnitTests
                 .Returns(GetExceptionTest());
 
             Assert.ThrowsAsync<ValidationException>(async () => await LectionService
-                .UpdateAsync(_LectionDTO));
+                .UpdateAsync(_lectionDto));
         }
 
         [Test]
@@ -123,7 +123,7 @@ namespace module_10.Tests.BLLUnitTests
 
         private static async Task<IEnumerable<Lection>> GetAllTest()
         {
-            var Lections = new List<Lection>
+            var lections = new List<Lection>
             {
                 new Lection
                 {
@@ -139,13 +139,13 @@ namespace module_10.Tests.BLLUnitTests
                     LectionHomework = null
                 }
             };
-            return Lections;
+            return lections;
         }
 
         private static async Task<IEnumerable<Lection>> GetAllExceptionTest()
         {
-            var Lections = new List<Lection>();
-            return Lections;
+            var lections = new List<Lection>();
+            return lections;
         }
 
         private static async Task<Lection> GetExceptionTest()
@@ -155,14 +155,14 @@ namespace module_10.Tests.BLLUnitTests
 
         private static async Task<Lection> GetTest()
         {
-            var Lection = new Lection
+            var lection = new Lection
             {
                 Id = 1,
                 Name = "Physics",
                 LecturerId = 1,
                 LectionHomework = null
             };
-            return Lection;
+            return lection;
         }
     }
 }

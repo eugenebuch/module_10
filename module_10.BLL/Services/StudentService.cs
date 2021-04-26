@@ -19,7 +19,7 @@ namespace module_10.BLL.Services
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
 
-        public StudentService(IRepository<Student> repository, IBLL_Mapper mapper, ILoggerFactory factory = null)
+        public StudentService(IRepository<Student> repository, IBllMapper mapper, ILoggerFactory factory = null)
         {
             _studentRepository = repository;
             _logger = factory?.CreateLogger("Student Service");

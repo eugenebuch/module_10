@@ -11,8 +11,8 @@ using module_10.DAL.Entities;
 using module_10.DAL.Interfaces;
 using module_10.DAL.Repositories;
 using module_10.WEB.Interfaces;
-using module_10.WEB.Mappers;
 using System;
+using module_10.WEB.Mapper;
 
 namespace module_10.WEB
 {
@@ -49,9 +49,9 @@ namespace module_10.WEB
                 };
             });
 
-            services.AddSingleton<IBLL_Mapper, BLL_Mapper>();
+            services.AddSingleton<IBllMapper, BllMapper>();
 
-            services.AddSingleton<IWEB_Mapper, WEB_Mapper>();
+            services.AddSingleton<IWebMapper, WebMapper>();
         }
     }
 }

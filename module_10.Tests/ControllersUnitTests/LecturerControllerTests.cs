@@ -3,7 +3,6 @@ using module_10.BLL.DTO;
 using module_10.BLL.Interfaces.ServiceInterfaces;
 using module_10.DAL.Entities;
 using module_10.WEB.Controllers;
-using module_10.WEB.Mappers;
 using module_10.WEB.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -11,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using module_10.WEB.Mapper;
 
 namespace module_10.Tests.ControllersUnitTests
 {
@@ -36,7 +36,7 @@ namespace module_10.Tests.ControllersUnitTests
             Mock.Setup(service => service.DeleteAsync(It.IsAny<int>()))
                 .Returns(ViewModel());
 
-            LecturerController = new LecturerController(Mock.Object, new WEB_Mapper());
+            LecturerController = new LecturerController(Mock.Object, new WebMapper());
         }
 
         [Test]

@@ -36,7 +36,7 @@ namespace module_10.Tests.BLLUnitTests
             Mock.Setup(repo => repo.GetAsync(It.IsAny<int>()))
                 .Returns(GetTest());
 
-            LecturerService = new LecturerService(Mock.Object, new BLL_Mapper(), new NullLoggerFactory());
+            LecturerService = new LecturerService(Mock.Object, new BllMapper(), new NullLoggerFactory());
         }
 
         [Test]

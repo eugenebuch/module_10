@@ -68,7 +68,7 @@ namespace module_10.Tests.BLLUnitTests
                 .Returns(GetTest());
 
             HomeworkService = new HomeworkService(RepositoryMock.Object, HomeworkHandlerMock.Object,
-                new BLL_Mapper(), new NullLoggerFactory());
+                new BllMapper(), new NullLoggerFactory());
         }
 
         [Test]

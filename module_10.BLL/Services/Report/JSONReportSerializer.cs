@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace module_10.BLL.Services.Report
 {
-    public class JSONReportSerializer : ISerializer
+    public class JsonReportSerializer : ISerializer
     {
         public string Serialize(IEnumerable<Attendance> attendance)
         {

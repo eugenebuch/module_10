@@ -42,7 +42,7 @@ namespace module_10.BLL.Services.Report
 
             if (serializer == null)
             {
-                var jsonSerializer = new JSONReportSerializer();
+                var jsonSerializer = new JsonReportSerializer();
                 serializer = jsonSerializer.Serialize;
             }
 
@@ -75,7 +75,7 @@ namespace module_10.BLL.Services.Report
 
             if (serializer == null)
             {
-                var jsonSerializer = new JSONReportSerializer();
+                var jsonSerializer = new JsonReportSerializer();
                 serializer = jsonSerializer.Serialize;
             }
 

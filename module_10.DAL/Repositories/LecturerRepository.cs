@@ -20,39 +20,39 @@ namespace module_10.DAL.Repositories
 
         public async Task<IEnumerable<Lecturer>> GetAllAsync()
         {
-            var Lecturer = await _db.Lecturers.ToListAsync();
-            return Lecturer;
+            var lecturer = await _db.Lecturers.ToListAsync();
+            return lecturer;
         }
 
         public async Task<Lecturer> GetAsync(int? id)
         {
-            var Lecturer = await _db.Lecturers.FindAsync(id);
-            return Lecturer;
+            var lecturer = await _db.Lecturers.FindAsync(id);
+            return lecturer;
         }
 
-        public async Task CreateAsync(Lecturer Lecturer)
+        public async Task CreateAsync(Lecturer lecturer)
         {
-            await _db.Lecturers.AddAsync(Lecturer);
+            await _db.Lecturers.AddAsync(lecturer);
             await _db.SaveChangesAsync();
         }
 
-        public void Update(Lecturer Lecturer)
+        public void Update(Lecturer lecturer)
         {
-            _db.Entry(Lecturer).State = EntityState.Modified;
+            _db.Entry(lecturer).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
         public IEnumerable<Lecturer> Find(Func<Lecturer, bool> predicate)
         {
-            var Lecturer = _db.Lecturers
+            var lecturer = _db.Lecturers
                 .Where(predicate)
                 .ToList();
-            return Lecturer;
+            return lecturer;
         }
 
-        public void Delete(Lecturer Lecturer)
+        public void Delete(Lecturer lecturer)
         {
-            _db.Lecturers.Remove(Lecturer);
+            _db.Lecturers.Remove(lecturer);
             _db.SaveChanges();
         }
     }

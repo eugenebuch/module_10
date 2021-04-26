@@ -4,7 +4,7 @@ using System;
 
 namespace module_10.DAL.DataAccess
 {
-    public class DataContext : DbContext
+    public sealed class DataContext : DbContext
     {
         public DataContext() { }
 
@@ -24,7 +24,7 @@ namespace module_10.DAL.DataAccess
             optionsBuilder.UseSqlServer(@"server=(localdb)\mssqllocaldb;database=data;trusted_connection=true;");
         }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().HasData(
                 new Student[]

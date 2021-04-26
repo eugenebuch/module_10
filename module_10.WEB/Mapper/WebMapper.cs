@@ -3,9 +3,9 @@ using module_10.BLL.DTO;
 using module_10.WEB.Interfaces;
 using module_10.WEB.ViewModels;
 
-namespace module_10.WEB.Mappers
+namespace module_10.WEB.Mapper
 {
-    public class WEB_Mapper : IWEB_Mapper
+    public class WebMapper : IWebMapper
     {
         public IMapper Create() => new MapperConfiguration(cfg =>
             {

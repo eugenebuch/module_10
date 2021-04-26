@@ -2,7 +2,7 @@
 
 namespace module_10.BLL.Interfaces
 {
-    public interface IBLL_Mapper
+    public interface IBllMapper
     {
         IMapper CreateMapper();
     }

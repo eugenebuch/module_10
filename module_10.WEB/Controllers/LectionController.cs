@@ -18,9 +18,9 @@ namespace module_10.WEB.Controllers
         private readonly IDTOService<LectionDTO, Lection> _db;
         private readonly IMapper _mapper;
 
-        public LectionController(IDTOService<LectionDTO, Lection> LectionService, IWEB_Mapper mapper)
+        public LectionController(IDTOService<LectionDTO, Lection> lectionService, IWebMapper mapper)
         {
-            _db = LectionService;
+            _db = lectionService;
             _mapper = mapper.Create();
         }
 
@@ -42,40 +42,40 @@ namespace module_10.WEB.Controllers
             if (id == null)
                 return BadRequest();
 
-            var Lection = await _db.GetAsync(id);
-            return Ok(Lection);
+            var lection = await _db.GetAsync(id);
+            return Ok(lection);
         }
 
         ///<summary>
         ///POST: Lection
         ///</summary>
         [HttpPost]
-        public async Task<ActionResult<Lection>> Post(LectionViewModel LectionViewModel)
+        public async Task<ActionResult<Lection>> Post(LectionViewModel lectionViewModel)
         {
-            if (LectionViewModel == null)
+            if (lectionViewModel == null)
                 return BadRequest();
 
-            var Lection = _mapper.Map<LectionDTO>(LectionViewModel);
-            await _db.CreateAsync(Lection);
-            return Ok(LectionViewModel);
+            var lection = _mapper.Map<LectionDTO>(lectionViewModel);
+            await _db.CreateAsync(lection);
+            return Ok(lectionViewModel);
         }
 
         ///<summary>
         ///PUT: Lection
         ///</summary>
         [HttpPut]
-        public async Task<ActionResult<LectionDTO>> Put(LectionViewModel LectionViewModel)
+        public async Task<ActionResult<LectionDTO>> Put(LectionViewModel lectionViewModel)
         {
-            if (LectionViewModel == null)
+            if (lectionViewModel == null)
                 return BadRequest();
 
-            if (!_db.Find(l => l.Id == LectionViewModel.Id).Any())
+            if (!_db.Find(l => l.Id == lectionViewModel.Id).Any())
                 return NotFound();
 
-            var Lection = _mapper.Map<LectionDTO>(LectionViewModel);
-            await _db.UpdateAsync(Lection);
+            var lection = _mapper.Map<LectionDTO>(lectionViewModel);
+            await _db.UpdateAsync(lection);
 
-            return Ok(LectionViewModel);
+            return Ok(lectionViewModel);
         }
 
         ///<summary>
@@ -87,9 +87,9 @@ namespace module_10.WEB.Controllers
             if (id == null)
                 return BadRequest();
 
-            var Lection = await _db.GetAsync(id);
+            var lection = await _db.GetAsync(id);
             await _db.DeleteAsync(id);
-            return Ok(Lection);
+            return Ok(lection);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace module_10.WEB.Controllers
         private readonly IDTOService<HomeworkDTO, Homework> _db;
         private readonly IMapper _mapper;
 
-        public HomeworkController(IDTOService<HomeworkDTO, Homework> homeworkService, IWEB_Mapper mapper)
+        public HomeworkController(IDTOService<HomeworkDTO, Homework> homeworkService, IWebMapper mapper)
         {
             _db = homeworkService;
             _mapper = mapper.Create();

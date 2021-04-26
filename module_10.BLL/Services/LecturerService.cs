@@ -15,20 +15,20 @@ namespace module_10.BLL.Services
 {
     public class LecturerService : IDTOService<LecturerDTO, Lecturer>
     {
-        private readonly IRepository<Lecturer> _LecturerRepository;
+        private readonly IRepository<Lecturer> _lecturerRepository;
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
 
-        public LecturerService(IRepository<Lecturer> repository, IBLL_Mapper mapper, ILoggerFactory factory = null)
+        public LecturerService(IRepository<Lecturer> repository, IBllMapper mapper, ILoggerFactory factory = null)
         {
-            _LecturerRepository = repository;
+            _lecturerRepository = repository;
             _logger = factory?.CreateLogger("Lecturer Service");
             _mapper = mapper.CreateMapper();
         }
 
         public async Task<IEnumerable<LecturerDTO>> GetAllAsync()
         {
-            var Lecturers = await _LecturerRepository.GetAllAsync();
+            var Lecturers = await _lecturerRepository.GetAllAsync();
 
             if (!Lecturers.Any())
             {
@@ -46,7 +46,7 @@ namespace module_10.BLL.Services
             var validator = new Validations();
             validator.IdValidation(id, _logger);
 
-            var Lecturer = await _LecturerRepository.GetAsync(id);
+            var Lecturer = await _lecturerRepository.GetAsync(id);
 
             validator.EntityValidation(Lecturer, _logger, nameof(Lecturer));
 
@@ -56,24 +56,24 @@ namespace module_10.BLL.Services
         public async Task CreateAsync(LecturerDTO item)
         {
             var prof = _mapper.Map<Lecturer>(item);
-            await _LecturerRepository.CreateAsync(prof);
+            await _lecturerRepository.CreateAsync(prof);
         }
 
         public async Task UpdateAsync(LecturerDTO item)
         {
-            var Lecturer = await _LecturerRepository.GetAsync(item.Id);
+            var Lecturer = await _lecturerRepository.GetAsync(item.Id);
 
             var validator = new Validations();
             validator.EntityValidation(Lecturer, _logger, nameof(Lecturer));
 
             Lecturer.FirstName = item.FirstName;
             Lecturer.LastName = item.LastName;
-            _LecturerRepository.Update(Lecturer);
+            _lecturerRepository.Update(Lecturer);
         }
 
         public IEnumerable<LecturerDTO> Find(Func<Lecturer, bool> predicate)
         {
-            var Lecturers = _LecturerRepository
+            var Lecturers = _lecturerRepository
                 .Find(predicate)
                 .ToList();
             return Lecturers
@@ -85,10 +85,10 @@ namespace module_10.BLL.Services
             var validator = new Validations();
             validator.IdValidation(id, _logger);
 
-            var Lecturer = await _LecturerRepository.GetAsync(id);
+            var Lecturer = await _lecturerRepository.GetAsync(id);
             validator.EntityValidation(Lecturer, _logger, nameof(Lecturer));
 
-            _LecturerRepository.Delete(Lecturer);
+            _lecturerRepository.Delete(Lecturer);
         }
     }
 }

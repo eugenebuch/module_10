@@ -36,7 +36,7 @@ namespace module_10.Tests.ControllersUnitTests
         [Test]
         public void GetStudentJsonReport_ValidCall()
         {
-            var response = ReportController.GetStudentReport(ReportController.FileType.JSON,
+            var response = ReportController.GetStudentReport(ReportController.FileType.Json,
                 "Harry", "Potter");
 
             Mock.Verify(m => m.MakeStudentReport(It.IsAny<string>(),
@@ -48,7 +48,7 @@ namespace module_10.Tests.ControllersUnitTests
         [Test]
         public void GetStudentJsonReport_BadRequestResult()
         {
-            var response = ReportController.GetStudentReport(ReportController.FileType.JSON,
+            var response = ReportController.GetStudentReport(ReportController.FileType.Json,
                 null, "Potter");
             var code = (StatusCodeResult)response;
 
@@ -58,7 +58,7 @@ namespace module_10.Tests.ControllersUnitTests
         [Test]
         public void GetLectionJsonReport_ValidCall()
         {
-            var response = ReportController.GetLectionReport(ReportController.FileType.JSON,
+            var response = ReportController.GetLectionReport(ReportController.FileType.Json,
                 "Math");
 
             Mock.Verify(m => m.MakeLectionReport(It.IsAny<string>(),
@@ -69,7 +69,7 @@ namespace module_10.Tests.ControllersUnitTests
         [Test]
         public void GetLectionJsonReport_BadRequestResult()
         {
-            var response = ReportController.GetLectionReport(ReportController.FileType.JSON,
+            var response = ReportController.GetLectionReport(ReportController.FileType.Json,
                 null);
             var code = (StatusCodeResult)response;
 
@@ -87,7 +87,7 @@ namespace module_10.Tests.ControllersUnitTests
                     It.IsAny<Func<IEnumerable<Attendance>, string>>()))
                 .Returns(MakeXmlReportData);
 
-            var response = ReportController.GetStudentReport(ReportController.FileType.XML,
+            var response = ReportController.GetStudentReport(ReportController.FileType.Xml,
                 "Harry", "Potter");
 
             Mock.Verify(m => m.MakeStudentReport(It.IsAny<string>(),
@@ -107,7 +107,7 @@ namespace module_10.Tests.ControllersUnitTests
                     It.IsAny<Func<IEnumerable<Attendance>, string>>()))
                 .Returns(MakeXmlReportData);
 
-            var response = ReportController.GetStudentReport(ReportController.FileType.XML,
+            var response = ReportController.GetStudentReport(ReportController.FileType.Xml,
                 null, "Potter");
             var code = (StatusCodeResult)response;
 
@@ -125,7 +125,7 @@ namespace module_10.Tests.ControllersUnitTests
                     It.IsAny<Func<IEnumerable<Attendance>, string>>()))
                 .Returns(MakeXmlReportData);
 
-            var response = ReportController.GetLectionReport(ReportController.FileType.XML,
+            var response = ReportController.GetLectionReport(ReportController.FileType.Xml,
                 "Math");
 
             Mock.Verify(m => m.MakeLectionReport(It.IsAny<string>(),
@@ -144,7 +144,7 @@ namespace module_10.Tests.ControllersUnitTests
                     It.IsAny<Func<IEnumerable<Attendance>, string>>()))
                 .Returns(MakeXmlReportData);
 
-            var response = ReportController.GetLectionReport(ReportController.FileType.XML,
+            var response = ReportController.GetLectionReport(ReportController.FileType.Xml,
                 null);
             var code = (StatusCodeResult)response;
 
@@ -166,7 +166,7 @@ namespace module_10.Tests.ControllersUnitTests
                     Date = DateTime.Now
                 }
             };
-            var serializer = new JSONReportSerializer();
+            var serializer = new JsonReportSerializer();
             return serializer.Serialize(attendance);
         }
 
@@ -185,7 +185,7 @@ namespace module_10.Tests.ControllersUnitTests
                     Date = DateTime.Now
                 }
             };
-            var serializer = new XMLReportSerializer();
+            var serializer = new XmlReportSerializer();
             return serializer.Serialize(attendance);
         }
     }

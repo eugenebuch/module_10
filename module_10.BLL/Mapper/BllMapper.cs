@@ -5,7 +5,7 @@ using module_10.DAL.Entities;
 
 namespace module_10.BLL.Mapper
 {
-    public class BLL_Mapper : IBLL_Mapper
+    public class BllMapper : IBllMapper
     {
         public IMapper CreateMapper()
         {

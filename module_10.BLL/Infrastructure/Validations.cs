@@ -8,7 +8,7 @@ namespace module_10.BLL.Infrastructure
         {
             if (id == null)
             {
-                var mes = "id not entered";
+                const string mes = "id not entered";
                 logger?.LogWarning(mes);
                 throw new ValidationException(mes);
             }

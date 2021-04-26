@@ -38,7 +38,7 @@ namespace module_10.Tests.BLLUnitTests
             Mock.Setup(repo => repo.GetAsync(It.IsAny<int>()))
                 .Returns(GetTest());
 
-            StudentService = new StudentService(Mock.Object, new BLL_Mapper(), new NullLoggerFactory());
+            StudentService = new StudentService(Mock.Object, new BllMapper(), new NullLoggerFactory());
         }
 
         [Test]

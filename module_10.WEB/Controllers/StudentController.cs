@@ -18,7 +18,7 @@ namespace module_10.WEB.Controllers
         private readonly IDTOService<StudentDTO, Student> _db;
         private readonly IMapper _mapper;
 
-        public StudentController(IDTOService<StudentDTO, Student> studentService, IWEB_Mapper mapper)
+        public StudentController(IDTOService<StudentDTO, Student> studentService, IWebMapper mapper)
         {
             _db = studentService;
             _mapper = mapper.Create();

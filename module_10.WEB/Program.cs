@@ -23,14 +23,15 @@ namespace module_10.WEB
             }
             catch (Exception ex)
             {
-                var logger = new LoggerFactory().CreateLogger("Program");
-                logger.LogCritical(ex, "Host terminated unexpectedly");
+                const string mes = "Host terminated unexpectedly";
+                var logger = new LoggerFactory().CreateLogger(nameof(Program));
+                logger.LogCritical(ex, mes);
             }
 
             host.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureLogging((context, logging) =>
                 {

@@ -20,39 +20,39 @@ namespace module_10.DAL.Repositories
 
         public async Task<IEnumerable<Lection>> GetAllAsync()
         {
-            var Lection = await _db.Lections.ToListAsync();
-            return Lection;
+            var lection = await _db.Lections.ToListAsync();
+            return lection;
         }
 
         public async Task<Lection> GetAsync(int? id)
         {
-            var Lection = await _db.Lections.FindAsync(id);
-            return Lection;
+            var lection = await _db.Lections.FindAsync(id);
+            return lection;
         }
 
-        public async Task CreateAsync(Lection Lection)
+        public async Task CreateAsync(Lection lection)
         {
-            await _db.Lections.AddAsync(Lection);
+            await _db.Lections.AddAsync(lection);
             await _db.SaveChangesAsync();
         }
 
-        public void Update(Lection Lection)
+        public void Update(Lection lection)
         {
-            _db.Entry(Lection).State = EntityState.Modified;
+            _db.Entry(lection).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
         public IEnumerable<Lection> Find(Func<Lection, bool> predicate)
         {
-            var Lection = _db.Lections
+            var lection = _db.Lections
                 .Where(predicate)
                 .ToList();
-            return Lection;
+            return lection;
         }
 
-        public void Delete(Lection Lection)
+        public void Delete(Lection lection)
         {
-            _db.Lections.Remove(Lection);
+            _db.Lections.Remove(lection);
             _db.SaveChanges();
         }
     }

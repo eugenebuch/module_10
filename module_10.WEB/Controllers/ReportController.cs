@@ -20,8 +20,8 @@ namespace module_10.WEB.Controllers
 
         public enum FileType
         {
-            JSON,
-            XML
+            Json,
+            Xml
         }
 
         ///<summary>
@@ -34,8 +34,8 @@ namespace module_10.WEB.Controllers
                 return BadRequest();
 
             ISerializer serializer = type switch {
-                FileType.JSON => new JSONReportSerializer(),
-                FileType.XML => new XMLReportSerializer(),
+                FileType.Json => new JsonReportSerializer(),
+                FileType.Xml => new XmlReportSerializer(),
                 _ => null
             };
 
@@ -60,8 +60,8 @@ namespace module_10.WEB.Controllers
 
             ISerializer serializer = type switch
             {
-                FileType.JSON => new JSONReportSerializer(),
-                FileType.XML => new XMLReportSerializer(),
+                FileType.Json => new JsonReportSerializer(),
+                FileType.Xml => new XmlReportSerializer(),
                 _ => null
             };
 
